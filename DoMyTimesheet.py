@@ -16,9 +16,6 @@ git_repo_paths = filter(lambda sub_dir: Path(sub_dir + "/.git").exists(), all_di
 all_log_entries = []
 for repo_path in git_repo_paths:
     repo = git.Repo(repo_path)
-    logs_per_repo = repo.git.log("--pretty='%s'").replace("'", "").split("\n")
-
-    for l in logs_per_repo:
-        all_log_entries.append(l)
+    all_log_entries += repo.git.log("--pretty='%s'").replace("'", "").split("\n")
 
 print(all_log_entries)
