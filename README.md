@@ -5,7 +5,11 @@ This simple python script scans all git repositiories in provided folder and pri
 For script to work commit messages have to have to start with jira signatures like `TST-12 message`.
 
 Usage:
-`python3 DoMyTimesheet.py --since=29-08-2021 --root='/path/to/repos'`
+`python3 DoMyTimesheet.py --since=2021-08-01 --root='/path/to/repos' --author='iwek'`
 
-For easier use modify variable `ROOT_ARG` in script to set path desired path so that you don't have to pass `root` arg each time
+Date needs to be in `iso8601` format
+
+For easier use modify variables `DEFAULT_ROOT` and `DEFAULT_AUTHOR` with your defaults (so that you dont have to pass them each time)
+
+Required dependencies: `GitPython`
 
