@@ -47,6 +47,7 @@ def create_timesheet(start_date: str, root: str, author: str):
     git_repo_paths = filter(lambda sub_dir: Path(sub_dir + "/.git").exists(), all_directories)
     all_jira_signatures = []
     for repo_path in git_repo_paths:
+        print("Checking commits in repo " + repo_path)
         repo = git.Repo(repo_path)
         raw_log_entries = repo.git.log(
             "--pretty='%s'",
@@ -62,7 +63,7 @@ def create_timesheet(start_date: str, root: str, author: str):
         all_jira_signatures += jira_signatures
 
     unique_jira_signatures = set(all_jira_signatures)
-
+    print("\nFound following jira signatures:")
     print_results(unique_jira_signatures)
 
 
